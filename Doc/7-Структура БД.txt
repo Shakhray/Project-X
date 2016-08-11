@@ -25,5 +25,63 @@
 
    1. id
    2. name
-   3. parameter_count         количество параметров типа
-   ...  Добаваить данные, необходимые при обработке типов в процессе работы программы.
+   3. categoty                категория типа (string - строковый, numeric - числовой, date - даты)
+   4. length                  максимально допустимое количество символов значения (для числовых типов без учета знака минуса и запятой. 
+			      При приобразовании числа к строке считать количество символов как length+2).
+   5. parameter_count         количество параметров типаЫ
+
+
+id  |	name        |	category   |	length	    |	parameter_count
+_______________________________________________________________________
+1 	VARCHAR		string		255 	   	1
+2 	TEXT		string		65535		0
+3 	MEDIUMTEXT	string		16777215	0
+4 	LONGTEXT	string		4294967295	0
+5 	TINYINT		numeric		3		1
+6	SMALLINT	numeric		5		1
+7	MEDIUMINT	numeric		7		1
+8	INT		numeric		10		1
+9	BIGINT		numeric		19		1
+10	DOUBLE		numeric		?		2
+11	DECIMAL		numeric		?		2
+12	DATE		date		10		0
+13	DATETIME	date		19		0
+14	TIME		date		9		0
+
+Описание таблицы data_type в обозначениях модели:
+|data_type| = (
+     ({
+        (id, TINYINT),
+        (name, VARCHAR),
+        (categoty, VARCHAR),
+        (length, BIGINT),
+        (parameter_count, TINYINT)
+     }),
+
+     {
+	1, 	VARCHAR,	string	,	255 	   ,	1,
+	2 ,	TEXT,		string	,	65535	   ,	0,
+	3 ,	MEDIUMTEXT,	string	,	16777215   ,    0,
+	4 ,	LONGTEXT,	string	,	4294967295,	0,
+	5 ,	TINYINT	,	numeric	,	3	,	1,
+	6,	SMALLINT,	numeric	,	5	,	1,
+	7,	MEDIUMINT,	numeric	,	7	,	1,
+	8,	INT	,	numeric	,	10	,	1,
+	9,	BIGINT	,	numeric	,	19	,	1,
+	10,	DOUBLE	,	numeric	,	?	,	2,
+	11,	DECIMAL	,	numeric	,	?	,	2,
+	12,	DATE	,	date	,	10	,	0,
+	13,	DATETIME,	date	,	19	,	0,
+	14,	TIME	,	date	,	9	,	0
+     })
+
+Примечание: для типов DECIMAL и DOUBLE пока не определлил, какое максимально допустимое значение они могут содержать.
+
+
+
+
+
+
+
+
+
